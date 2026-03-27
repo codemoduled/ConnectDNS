@@ -1,0 +1,2 @@
+C:\Users\emvar\OneDrive\Desktop\ConnectDNS\ConnectDNS\bin\Release\net8.0-windows\win-x64\publish\ConnectDNS.pdb
+C:\Users\emvar\OneDrive\Desktop\ConnectDNS\ConnectDNS\bin\Release\net8.0-windows\win-x64\publish\ConnectDNS.exe
