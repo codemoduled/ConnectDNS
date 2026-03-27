@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Security.Principal;
 
 class Program
@@ -26,10 +27,24 @@ class Program
         Console.WriteLine();
 
         Console.Write("[1/2] Setting DNS to Cloudflare... ");
-        RunNetsh("interface ip set dns \"Wi-Fi\" static 1.1.1.1");
-        RunNetsh("interface ip add dns \"Wi-Fi\" 1.0.0.1 index=2");
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Done!");
+
+        var interfaces = NetworkInterface.GetAllNetworkInterfaces();
+        bool any = false;
+        foreach (var ni in interfaces)
+        {
+            if (ni.OperationalStatus == OperationalStatus.Up &&
+                (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 ||
+                 ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet))
+            {
+                string name = ni.Name;
+                RunNetsh($"interface ip set dns \"{name}\" static 1.1.1.1");
+                RunNetsh($"interface ip add dns \"{name}\" 1.0.0.1 index=2");
+                any = true;
+            }
+        }
+
+        Console.ForegroundColor = any ? ConsoleColor.Green : ConsoleColor.Red;
+        Console.WriteLine(any ? "Done!" : "No active interface found!");
         Console.ResetColor();
 
         Console.WriteLine();

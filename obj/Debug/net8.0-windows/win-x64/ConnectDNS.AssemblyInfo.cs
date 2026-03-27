@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConnectDNS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bb48ee50ae288ba7eefd11febdbf72afccb94b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConnectDNS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConnectDNS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
